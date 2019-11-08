@@ -2,6 +2,7 @@ var content = document.getElementById("data");
 var btnsearch = document.getElementById("btnsearch");
 var txtinput = document.getElementById("txtinput");
 var count = document.getElementById("txtcount");
+var lastupdate = document.getElementById("lastupdate");
 btnsearch.addEventListener("click", begin_search);
 txtinput.addEventListener("keyup", begin_search);
 
@@ -15,6 +16,9 @@ request.onload = function () {
     txt = ""
     var bicycles = request.response;
     var station_info = bicycles["data"]["stations"];
+    
+    lastupdate.innerHTML = "Last updated: <strong>" + convert_time(bicycles["last_updated"]) + "</strong>";
+    
     if (txtinput.value == "") {
         txt = ""
     }
