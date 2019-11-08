@@ -1,0 +1,17 @@
+body {
+    background-color:#075CC1;
+}
+.box {
+    background-color: white;
+    border-radius: 10px;
+    color: #075CC1;
+    text-align: center;
+    margin: 10px auto;
+    padding: 10px;
+    width: 80%;
+}
+
+#data {
+    color: black;
+    column-rule: 1px solid lightblue;
+}
