@@ -1,3 +1,4 @@
+// Declare global variables
 var content = document.getElementById("data");
 var btnsearch = document.getElementById("btnsearch");
 var txtinput = document.getElementById("txtinput");
@@ -7,11 +8,13 @@ btnsearch.addEventListener("click", begin_search);
 txtinput.addEventListener("keyup", begin_search);
 
 
+// Receive data from Oslo Bysykkel
 var request = new XMLHttpRequest();
 request.open('GET', 'https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json', true);
 request.responseType = "json";
 request.send();
 
+// Update the website with current data
 request.onload = function () {
     txt = ""
     var bicycles = request.response;
@@ -34,7 +37,7 @@ request.onload = function () {
     content.innerHTML = txt;
 }
 
-
+// Search through the JSON and return the bicycle racks with enough capacity
 function searchJSON(txt, capacity) {
     overview = []
     max_capacity = 0;
@@ -52,10 +55,12 @@ function searchJSON(txt, capacity) {
 }
 
 
+// Search for bicycle racks when writing/button clicked
 function begin_search() {
     request.onload();
 }
 
+// Convert to correct time display format
 function convert_time(timestamp) {
     var time = new Date(timestamp*1000);
     var hours = "0" + time.getHours();
@@ -64,6 +69,7 @@ function convert_time(timestamp) {
     return hours.substr(-2) + ":" + min.substr(-2) + ":" + sec.substr(-2);
 }
 
+// Determine how many colums the text split into, based on number of bicycle racks
 function column_number(number) {
     if (number < 40) {
         content.style.columnCount = 3;
