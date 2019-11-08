@@ -56,6 +56,14 @@ function begin_search() {
     request.onload();
 }
 
+function convert_time(timestamp) {
+    var time = new Date(timestamp*1000);
+    var hours = "0" + time.getHours();
+    var min = "0" + time.getMinutes();
+    var sec = "0" + time.getSeconds();
+    return hours[-2] + ":" + min[-2] + ":" + sec[-2];
+}
+
 function column_number(number) {
     if (number < 40) {
         content.style.columnCount = 3;
