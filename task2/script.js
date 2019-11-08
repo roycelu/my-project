@@ -20,8 +20,6 @@ request.onload = function () {
     var bicycles = request.response;
     var station_info = bicycles["data"]["stations"];
     
-    lastupdate.innerHTML = "Last updated: <strong>" + convert_time(bicycles["last_updated"]) + "</strong>";
-    
     if (txtinput.value == "") {
         txt = ""
     }
@@ -35,6 +33,7 @@ request.onload = function () {
     column_number(txtinput.value);
     count.innerHTML = "Bicycle racks that can hold " + txtinput.value + " bicycles"
     content.innerHTML = txt;
+    lastupdate.innerHTML = "Last updated: <strong>" + convert_time(bicycles["last_updated"]) + "</strong>";
 }
 
 // Search through the JSON and return the bicycle racks with enough capacity
@@ -42,7 +41,7 @@ function searchJSON(txt, capacity) {
     overview = []
     max = max_capacity(txt)
     for (var i=0; i<txt.length; i++) {
-        if ((txt[i]["capacity"] >= capacity) && (0 < capacity <= max)) {
+        if ((txt[i]["capacity"] >= capacity) && (capacity > 0) && (capacity <= max)) {
             overview.push(txt[i]["name"]);
         }
     }
@@ -75,7 +74,7 @@ function convert_time(timestamp) {
     return hours.substr(-2) + ":" + min.substr(-2) + ":" + sec.substr(-2);
 }
 
-// Determine how many colums the text split into, based on number of bicycle racks
+// Determine how many colums the text splits into, based on number of bicycle racks
 function column_number(number) {
     if (number < 40) {
         content.style.columnCount = 3;
