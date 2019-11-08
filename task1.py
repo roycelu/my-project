@@ -26,3 +26,6 @@ class TestHighestProduct(unittest.TestCase):
         data = [1, 2]
         result = highest_product(data)
         self.assertEqual(result, "List too short")
+        
+if __name__ == "__main__":
+    unittest.main()
