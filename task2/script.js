@@ -7,9 +7,6 @@ var lastupdate = document.getElementById("lastupdate");
 btnsearch.addEventListener("click", begin_search);
 txtinput.addEventListener("keyup", begin_search);
 
-// Set cursor in the input field
-txtinput.focus();
-
 
 // Receive data from Oslo Bysykkel
 var request = new XMLHttpRequest();
