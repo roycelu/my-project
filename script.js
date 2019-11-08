@@ -5,22 +5,6 @@ var count = document.getElementById("txtcount");
 btnsearch.addEventListener("click", begin_search);
 txtinput.addEventListener("keyup", begin_search);
 
-function begin_search() {
-    request.onload();
-}
-
-function column_number(number) {
-    if (number < 40) {
-        content.style.columnCount = 3;
-    }
-    else if (number < 45) {
-        content.style.columnCount = 2;
-    }
-    else {
-        content.style.columnCount = 1;
-    }
-}
-
 
 var request = new XMLHttpRequest();
 request.open('GET', 'https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json', true);
@@ -42,9 +26,10 @@ request.onload = function () {
         }
     }
     column_number(txtinput.value);
-    count.innerHTML = "Bicycle racks can hold " + txtinput.value + " bicycles"
+    count.innerHTML = "Bicycle racks that can hold " + txtinput.value + " bicycles"
     content.innerHTML = txt;
 }
+
 
 function searchJSON(txt, capacity) {
     overview = []
@@ -54,11 +39,27 @@ function searchJSON(txt, capacity) {
             max_capacity = txt[i]["capacity"];
         }
     }
-
     for (var i=0; i<txt.length; i++) {
         if ((txt[i]["capacity"] >= capacity) && (capacity <= max_capacity)) {
             overview.push(txt[i]["name"]);
         }
     }
     return overview;
+}
+
+
+function begin_search() {
+    request.onload();
+}
+
+function column_number(number) {
+    if (number < 40) {
+        content.style.columnCount = 3;
+    }
+    else if (number < 45) {
+        content.style.columnCount = 2;
+    }
+    else {
+        content.style.columnCount = 1;
+    }
 }
