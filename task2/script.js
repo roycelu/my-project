@@ -42,7 +42,7 @@ function searchJSON(txt, capacity) {
     overview = []
     max = max_capacity(txt)
     for (var i=0; i<txt.length; i++) {
-        if ((txt[i]["capacity"] >= capacity) && (capacity <= max)) {
+        if ((txt[i]["capacity"] >= capacity) && (0 < capacity <= max)) {
             overview.push(txt[i]["name"]);
         }
     }
