@@ -42,7 +42,7 @@ request.onload = function () {
         }
     }
     column_number(txtinput.value);
-    count.innerHTML = "Bicycle racks that holds " + txtinput.value + " bicycles"
+    count.innerHTML = "Bicycle racks can hold " + txtinput.value + " bicycles"
     content.innerHTML = txt;
 }
 
