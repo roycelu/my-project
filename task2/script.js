@@ -61,7 +61,7 @@ function convert_time(timestamp) {
     var hours = "0" + time.getHours();
     var min = "0" + time.getMinutes();
     var sec = "0" + time.getSeconds();
-    return hours[-2] + ":" + min[-2] + ":" + sec[-2];
+    return hours.substr(-2) + ":" + min.substr(-2) + ":" + sec.substr(-2);
 }
 
 function column_number(number) {
