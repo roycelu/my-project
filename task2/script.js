@@ -40,14 +40,9 @@ request.onload = function () {
 // Search through the JSON and return the bicycle racks with enough capacity
 function searchJSON(txt, capacity) {
     overview = []
-    max_capacity = 0;
+    max = max_capacity(txt)
     for (var i=0; i<txt.length; i++) {
-        if (txt[i]["capacity"] >= max_capacity) {
-            max_capacity = txt[i]["capacity"];
-        }
-    }
-    for (var i=0; i<txt.length; i++) {
-        if ((txt[i]["capacity"] >= capacity) && (capacity <= max_capacity)) {
+        if ((txt[i]["capacity"] >= capacity) && (capacity <= max)) {
             overview.push(txt[i]["name"]);
         }
     }
@@ -58,6 +53,17 @@ function searchJSON(txt, capacity) {
 // Search for bicycle racks when writing/button clicked
 function begin_search() {
     request.onload();
+}
+
+// Find max capacity of the bicycle racks
+function max_capacity(txt) {
+    max = 0;
+    for (var i=0; i<txt.length; i++) {
+        if (txt[i]["capacity"] >= max) {
+            max = txt[i]["capacity"];
+        }
+    }
+    return max;
 }
 
 // Convert to correct time display format
