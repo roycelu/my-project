@@ -1,5 +1,5 @@
 
-# Question 1
+# Assume that the length of the given list is not always 3 or more
 def highest_product(liste):
     try:
         liste.sort()
