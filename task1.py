@@ -21,6 +21,16 @@ class TestHighestProduct(unittest.TestCase):
         data = [1, 2, 3, 4, 5]
         result = highest_product(data)
         self.assertEqual(result, 60)
+        
+    def test_product_negative(self):
+        data = [-1, -10, -2, -6, -5, -3]
+        result = highest_product(data)
+        self.assertEqual(result, -6)
+    
+    def test_product_negative2(self):
+        data = [1, 0, -1, -2, -3, -4, -5]
+        result = highest_product(data)
+        self.assertEqual(result, 0)
    
     def test_short_list(self):
         data = [1, 2]
