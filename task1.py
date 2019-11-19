@@ -3,7 +3,7 @@
 def highest_product(liste):
     try:
         liste.sort()
-        return liste[-3]*liste[-2]*liste[-1]
+        return max(liste[-1]*liste[-2]*liste[-3], liste[0]*liste[1]*liste[-1])
     except:
         return "List too short"
 
@@ -30,7 +30,7 @@ class TestHighestProduct(unittest.TestCase):
     def test_product_negative2(self):
         data = [1, 0, -1, -2, -3, -4, -5]
         result = highest_product(data)
-        self.assertEqual(result, 0)
+        self.assertEqual(result, 20)
    
     def test_short_list(self):
         data = [1, 2]
